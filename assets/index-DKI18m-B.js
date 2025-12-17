@@ -674,7 +674,7 @@ Error generating stack: `+s.message+`
 `,Rn=A.input`
   width: 100%;
   padding: 12px 14px;
-  font-size: 15px;
+  font-size: 16px; /* Prevents iOS auto-zoom on focus */
   font-weight: 500;
   color: var(--text-primary);
   background: var(--bg-tertiary);
@@ -706,7 +706,7 @@ Error generating stack: `+s.message+`
     left: 14px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--text-tertiary);
     pointer-events: none;
@@ -724,7 +724,7 @@ Error generating stack: `+s.message+`
     right: 14px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--text-tertiary);
     pointer-events: none;
@@ -813,7 +813,7 @@ Error generating stack: `+s.message+`
 `,v2=A(ve.button)`
   width: 100%;
   padding: 14px 20px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: white;
   background: var(--gradient);
