@@ -7,7 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Personal Tools Collection - A suite of useful utilities and calculators" />
     <title>Tools</title>
-    <script type="module" crossorigin src="/tools/assets/index-Cr8fiXvE.js"></script>
+    <style>
+      /* Match theme colors - default to dark to prevent white flash */
+      :root {
+        --bg-color: #0a0a0f;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg-color: #f8f9fc;
+        }
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        min-height: 100vh;
+      }
+    </style>
+    <script type="module" crossorigin src="/tools/assets/index-D79lTnyj.js"></script>
   </head>
   <body>
     <script>
