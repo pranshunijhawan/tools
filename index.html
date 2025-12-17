@@ -10,6 +10,25 @@
     <script type="module" crossorigin src="/tools/assets/index-CADKi6Wo.js"></script>
   </head>
   <body>
+    <script>
+      // Handle SPA redirect from 404.html
+      (function() {
+        const redirect = sessionStorage.getItem('spa-redirect');
+        if (redirect) {
+          sessionStorage.removeItem('spa-redirect');
+          // Extract the path relative to /tools/
+          const basePath = '/tools';
+          let targetPath = redirect;
+          if (targetPath.startsWith(basePath)) {
+            targetPath = targetPath.slice(basePath.length) || '/';
+          }
+          // Use history.replaceState to update URL without reload
+          if (targetPath !== '/' && targetPath !== '') {
+            history.replaceState(null, '', basePath + targetPath);
+          }
+        }
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>
