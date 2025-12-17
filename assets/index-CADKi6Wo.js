@@ -96,7 +96,7 @@ Error generating stack: `+s.message+`
     --glass-border: rgba(255, 255, 255, 0.10);
     --glass-highlight: rgba(255, 255, 255, 0.15);
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.32);
-    --specular-highlight: rgba(255, 255, 255, 0.25);
+    --specular-highlight: transparent;
     --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.32);
     --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.4);
     
@@ -167,7 +167,7 @@ Error generating stack: `+s.message+`
     --glass-border: rgba(0, 0, 0, 0.08);
     --glass-highlight: rgba(255, 255, 255, 0.5);
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    --specular-highlight: rgba(255, 255, 255, 0.6);
+    --specular-highlight: transparent;
     --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
   }
