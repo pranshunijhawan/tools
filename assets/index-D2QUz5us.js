@@ -1351,9 +1351,19 @@ Error generating stack: `+s.message+`
     font-size: 12px;
     border-radius: 8px;
   }
-`,sP=S(V.button).attrs({type:"button"})`
+`,sP=S.div`
+  position: relative;
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+  }
+`,oP=S.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1363,12 +1373,7 @@ Error generating stack: `+s.message+`
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--timing-small) var(--ease-standard);
-
-  &:hover {
-    background: var(--glass-bg-hover);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  pointer-events: none;
 
   svg {
     width: 18px;
@@ -1376,8 +1381,6 @@ Error generating stack: `+s.message+`
   }
 
   @media (max-width: 480px) {
-    width: 36px;
-    height: 36px;
     border-radius: 8px;
     
     svg {
@@ -1385,18 +1388,32 @@ Error generating stack: `+s.message+`
       height: 16px;
     }
   }
-`,oP=S.input`
+`,aP=S.input`
   position: absolute;
   top: 0;
   left: 0;
-  width: 1px;
-  height: 1px;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  pointer-events: none;
-`,aP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"3",y:"4",width:"18",height:"18",rx:"2",ry:"2"}),u.jsx("line",{x1:"16",y1:"2",x2:"16",y2:"6"}),u.jsx("line",{x1:"8",y1:"2",x2:"8",y2:"6"}),u.jsx("line",{x1:"3",y1:"10",x2:"21",y2:"10"})]}),lP=({selectedDate:e,onDateChange:t})=>{const n=C.useRef(null),r=x=>{var y,w;x.preventDefault(),x.stopPropagation(),(w=(y=n.current)==null?void 0:y.showPicker)==null||w.call(y)},i=x=>{x.preventDefault(),x.stopPropagation(),t(ii(new Date))},o=km(e)?"today":NT(e)?"past":"future",a=km(e),l=new Date(e+"T00:00:00"),c=l.getDate(),d=l.toLocaleDateString("en-US",{month:"short"}).toUpperCase(),f=l.toLocaleDateString("en-US",{weekday:"long"}),p=l.getFullYear(),g=()=>{switch(o){case"past":return"Past";case"today":return"Today";case"future":return"Future"}};return u.jsx(GT,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:u.jsxs(KT,{children:[u.jsxs(YT,{$type:o,children:[u.jsx(QT,{children:c}),u.jsx(XT,{children:d})]}),u.jsxs(ZT,{children:[u.jsx(JT,{children:f}),u.jsxs(qT,{children:[u.jsx(eP,{children:p}),u.jsx(tP,{$type:o}),u.jsx(nP,{$type:o,children:g()})]})]}),u.jsxs(rP,{children:[!a&&u.jsx(iP,{onClick:i,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Today"}),u.jsx(sP,{onClick:r,whileHover:{scale:1.05},whileTap:{scale:.95},"aria-label":"Change date",children:u.jsx(aP,{})})]}),u.jsx(oP,{ref:n,type:"date",value:e,onChange:x=>t(x.target.value),"aria-label":"Select date"})]})})},uP=ys`
+  cursor: pointer;
+  font-size: 16px; /* Prevents iOS zoom */
+  
+  /* Make the calendar picker indicator cover the whole area */
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+  }
+`,lP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"3",y:"4",width:"18",height:"18",rx:"2",ry:"2"}),u.jsx("line",{x1:"16",y1:"2",x2:"16",y2:"6"}),u.jsx("line",{x1:"8",y1:"2",x2:"8",y2:"6"}),u.jsx("line",{x1:"3",y1:"10",x2:"21",y2:"10"})]}),uP=({selectedDate:e,onDateChange:t})=>{const n=p=>{p.preventDefault(),p.stopPropagation(),t(ii(new Date))},i=km(e)?"today":NT(e)?"past":"future",s=km(e),o=new Date(e+"T00:00:00"),a=o.getDate(),l=o.toLocaleDateString("en-US",{month:"short"}).toUpperCase(),c=o.toLocaleDateString("en-US",{weekday:"long"}),d=o.getFullYear(),f=()=>{switch(i){case"past":return"Past";case"today":return"Today";case"future":return"Future"}};return u.jsx(GT,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:u.jsxs(KT,{children:[u.jsxs(YT,{$type:i,children:[u.jsx(QT,{children:a}),u.jsx(XT,{children:l})]}),u.jsxs(ZT,{children:[u.jsx(JT,{children:c}),u.jsxs(qT,{children:[u.jsx(eP,{children:d}),u.jsx(tP,{$type:i}),u.jsx(nP,{$type:i,children:f()})]})]}),u.jsxs(rP,{children:[!s&&u.jsx(iP,{onClick:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Today"}),u.jsxs(sP,{children:[u.jsx(oP,{children:u.jsx(lP,{})}),u.jsx(aP,{type:"date",value:e,onChange:p=>t(p.target.value),"aria-label":"Select date"})]})]})]})})},cP=ys`
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-`,cP=S(V.div)`
+`,dP=S(V.div)`
   position: relative;
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
@@ -1433,7 +1450,7 @@ Error generating stack: `+s.message+`
     mask-composite: exclude;
     pointer-events: none;
   }
-`,dP=S.div`
+`,fP=S.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -1446,18 +1463,18 @@ Error generating stack: `+s.message+`
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: ${uP} 8s ease-in-out infinite;
+  animation: ${cP} 8s ease-in-out infinite;
   pointer-events: none;
   border-radius: var(--radius-xl);
-`,fP=S.div`
+`,pP=S.div`
   position: relative;
   z-index: 1;
-`,pP=S.div`
+`,hP=S.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--space-md);
-`,hP=S.div`
+`,mP=S.div`
   width: 36px;
   height: 36px;
   border-radius: 10px;
@@ -1473,7 +1490,7 @@ Error generating stack: `+s.message+`
     height: 18px;
     color: ${({$color:e})=>e};
   }
-`,mP=S.div`
+`,gP=S.div`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1497,30 +1514,30 @@ Error generating stack: `+s.message+`
           color: #10b981;
           border: 1px solid rgba(16, 185, 129, 0.3);
         `}}}
-`,gP=S.div`
+`,vP=S.div`
   font-size: 13px;
   font-weight: 600;
   color: var(--text-secondary);
   margin-bottom: 4px;
-`,vP=S.div`
+`,yP=S.div`
   font-size: 26px;
   font-weight: 700;
   color: ${({$negative:e,$color:t})=>e?"#ef4444":t||"var(--text-primary)"};
   letter-spacing: -0.03em;
   text-shadow: 0 2px 8px ${({$negative:e,$color:t})=>e?"rgba(239, 68, 68, 0.25)":`${t}30`||"transparent"};
-`,yP=S.div`
+`,xP=S.div`
   font-size: 11px;
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: 2px;
-`,xP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),wP={hidden:{opacity:0,y:20,scale:.95},visible:{opacity:1,y:0,scale:1,transition:{type:"spring",stiffness:100,damping:15}}},SP=({accountBalance:e})=>{const{account:t,balance:n,pendingBill:r,totalOutstanding:i}=e,s=t.type==="credit_card",o=s?Math.abs(n):n,a=n<0,l=r!==void 0&&r>0,c=()=>s?i&&i>0?"due":l?"unbilled":"clear":"clear";return u.jsxs(cP,{$accentColor:t.color,variants:wP,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(dP,{}),u.jsxs(fP,{children:[u.jsxs(pP,{children:[u.jsx(hP,{$color:t.color,children:u.jsx(xP,{})}),s&&u.jsx(mP,{$status:c(),children:c()==="due"?"Due":c()==="unbilled"?"Unbilled":"Clear"})]}),u.jsx(gP,{children:t.name.replace(" Credit Card","").replace(" Bank","")}),u.jsxs(vP,{$negative:s&&a,$color:t.color,children:[s&&a?"-":"",Pr(o)]}),u.jsx(yP,{children:s?a?"Outstanding":"Overpaid":"Balance"})]})]})},kP=ys`
+`,wP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),SP={hidden:{opacity:0,y:20,scale:.95},visible:{opacity:1,y:0,scale:1,transition:{type:"spring",stiffness:100,damping:15}}},kP=({accountBalance:e})=>{const{account:t,balance:n,pendingBill:r,totalOutstanding:i}=e,s=t.type==="credit_card",o=s?Math.abs(n):n,a=n<0,l=r!==void 0&&r>0,c=()=>s?i&&i>0?"due":l?"unbilled":"clear":"clear";return u.jsxs(dP,{$accentColor:t.color,variants:SP,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(fP,{}),u.jsxs(pP,{children:[u.jsxs(hP,{children:[u.jsx(mP,{$color:t.color,children:u.jsx(wP,{})}),s&&u.jsx(gP,{$status:c(),children:c()==="due"?"Due":c()==="unbilled"?"Unbilled":"Clear"})]}),u.jsx(vP,{children:t.name.replace(" Credit Card","").replace(" Bank","")}),u.jsxs(yP,{$negative:s&&a,$color:t.color,children:[s&&a?"-":"",Pr(o)]}),u.jsx(xP,{children:s?a?"Outstanding":"Overpaid":"Balance"})]})]})},CP=ys`
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-`,CP=ys`
+`,bP=ys`
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
-`,bP=S(V.div)`
+`,jP=S(V.div)`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
@@ -1573,7 +1590,7 @@ Error generating stack: `+s.message+`
     height: 200%;
     background: ${({$variant:e})=>{switch(e){case"hdfc":return"radial-gradient(ellipse at 30% 30%, rgba(0, 76, 143, 0.15) 0%, transparent 50%)";case"icici":return"radial-gradient(ellipse at 30% 30%, rgba(245, 130, 32, 0.15) 0%, transparent 50%)";case"negative":return"radial-gradient(ellipse at 30% 30%, rgba(239, 68, 68, 0.15) 0%, transparent 50%)";default:return"radial-gradient(ellipse at 30% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 50%)"}}};
     pointer-events: none;
-    animation: ${CP} 4s ease-in-out infinite;
+    animation: ${bP} 4s ease-in-out infinite;
   }
 
   @media (max-width: 500px) {
@@ -1673,13 +1690,13 @@ Error generating stack: `+s.message+`
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: ${kP} 8s ease-in-out infinite;
+  animation: ${CP} 8s ease-in-out infinite;
   pointer-events: none;
   border-radius: var(--radius-xl);
-`,Cm=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("path",{d:"M3 21h18"}),u.jsx("path",{d:"M3 10h18"}),u.jsx("path",{d:"M5 6l7-3 7 3"}),u.jsx("path",{d:"M4 10v11"}),u.jsx("path",{d:"M20 10v11"}),u.jsx("path",{d:"M8 10v11"}),u.jsx("path",{d:"M12 10v11"}),u.jsx("path",{d:"M16 10v11"})]}),jP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),TP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("path",{d:"M21 12V7H5a2 2 0 0 1 0-4h14v4"}),u.jsx("path",{d:"M3 5v14a2 2 0 0 0 2 2h16v-5"}),u.jsx("path",{d:"M18 12a2 2 0 0 0 0 4h4v-4Z"})]}),lo=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("path",{d:"m18 15-6-6-6 6"})}),uo=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("path",{d:"m6 9 6 6 6-6"})}),PP={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.08}}},co={hidden:{opacity:0,y:20,scale:.95},visible:{opacity:1,y:0,scale:1,transition:{type:"spring",stiffness:100,damping:15}}},EP=({balances:e})=>{const t=e.find(l=>l.account.id==="hdfc-bank"),n=e.find(l=>l.account.id==="icici-bank"),r=e.filter(l=>l.account.type==="credit_card"),i=(t==null?void 0:t.balance)||0,s=(n==null?void 0:n.balance)||0,o=r.reduce((l,c)=>l+(c.totalOutstanding||0),0),a=i-o;return u.jsxs(bP,{variants:PP,initial:"hidden",animate:"visible",children:[u.jsxs(eo,{$variant:"hdfc",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#004C8F",children:u.jsx(Cm,{})}),u.jsxs(io,{$positive:i>=0,children:[i>=0?u.jsx(lo,{}):u.jsx(uo,{}),i>=0?"+":""]})]}),u.jsx(so,{children:"HDFC Bank"}),u.jsx(oo,{$color:i>=0?"#004C8F":"#ef4444",children:Pr(i)})]})]}),u.jsxs(eo,{$variant:"icici",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#F58220",children:u.jsx(Cm,{})}),u.jsxs(io,{$positive:s>=0,children:[s>=0?u.jsx(lo,{}):u.jsx(uo,{}),s>=0?"+":""]})]}),u.jsx(so,{children:"ICICI Bank"}),u.jsx(oo,{$color:s>=0?"#F58220":"#ef4444",children:Pr(s)})]})]}),u.jsxs(eo,{$variant:"negative",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#ef4444",children:u.jsx(jP,{})}),u.jsxs(io,{$positive:o===0,children:[o===0?u.jsx(lo,{}):u.jsx(uo,{}),o>0?"Due":"Clear"]})]}),u.jsx(so,{children:"Credit Cards"}),u.jsxs(oo,{$color:o>0?"#ef4444":"#10b981",children:[o>0?"-":"",Pr(o)]})]})]}),u.jsxs(eo,{$variant:"neutral",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#10b981",children:u.jsx(TP,{})}),u.jsxs(io,{$positive:a>=0,children:[a>=0?u.jsx(lo,{}):u.jsx(uo,{}),"Net"]})]}),u.jsx(so,{children:"Net Position"}),u.jsx(oo,{$color:a>=0?"#10b981":"#ef4444",children:Pr(a)})]})]})]})},AP=ys`
+`,Cm=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("path",{d:"M3 21h18"}),u.jsx("path",{d:"M3 10h18"}),u.jsx("path",{d:"M5 6l7-3 7 3"}),u.jsx("path",{d:"M4 10v11"}),u.jsx("path",{d:"M20 10v11"}),u.jsx("path",{d:"M8 10v11"}),u.jsx("path",{d:"M12 10v11"}),u.jsx("path",{d:"M16 10v11"})]}),TP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),PP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("path",{d:"M21 12V7H5a2 2 0 0 1 0-4h14v4"}),u.jsx("path",{d:"M3 5v14a2 2 0 0 0 2 2h16v-5"}),u.jsx("path",{d:"M18 12a2 2 0 0 0 0 4h4v-4Z"})]}),lo=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("path",{d:"m18 15-6-6-6 6"})}),uo=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("path",{d:"m6 9 6 6 6-6"})}),EP={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.08}}},co={hidden:{opacity:0,y:20,scale:.95},visible:{opacity:1,y:0,scale:1,transition:{type:"spring",stiffness:100,damping:15}}},AP=({balances:e})=>{const t=e.find(l=>l.account.id==="hdfc-bank"),n=e.find(l=>l.account.id==="icici-bank"),r=e.filter(l=>l.account.type==="credit_card"),i=(t==null?void 0:t.balance)||0,s=(n==null?void 0:n.balance)||0,o=r.reduce((l,c)=>l+(c.totalOutstanding||0),0),a=i-o;return u.jsxs(jP,{variants:EP,initial:"hidden",animate:"visible",children:[u.jsxs(eo,{$variant:"hdfc",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#004C8F",children:u.jsx(Cm,{})}),u.jsxs(io,{$positive:i>=0,children:[i>=0?u.jsx(lo,{}):u.jsx(uo,{}),i>=0?"+":""]})]}),u.jsx(so,{children:"HDFC Bank"}),u.jsx(oo,{$color:i>=0?"#004C8F":"#ef4444",children:Pr(i)})]})]}),u.jsxs(eo,{$variant:"icici",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#F58220",children:u.jsx(Cm,{})}),u.jsxs(io,{$positive:s>=0,children:[s>=0?u.jsx(lo,{}):u.jsx(uo,{}),s>=0?"+":""]})]}),u.jsx(so,{children:"ICICI Bank"}),u.jsx(oo,{$color:s>=0?"#F58220":"#ef4444",children:Pr(s)})]})]}),u.jsxs(eo,{$variant:"negative",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#ef4444",children:u.jsx(TP,{})}),u.jsxs(io,{$positive:o===0,children:[o===0?u.jsx(lo,{}):u.jsx(uo,{}),o>0?"Due":"Clear"]})]}),u.jsx(so,{children:"Credit Cards"}),u.jsxs(oo,{$color:o>0?"#ef4444":"#10b981",children:[o>0?"-":"",Pr(o)]})]})]}),u.jsxs(eo,{$variant:"neutral",variants:co,whileHover:{scale:1.02,transition:{duration:.2}},children:[u.jsx(ao,{}),u.jsxs(to,{children:[u.jsxs(no,{children:[u.jsx(ro,{$color:"#10b981",children:u.jsx(PP,{})}),u.jsxs(io,{$positive:a>=0,children:[a>=0?u.jsx(lo,{}):u.jsx(uo,{}),"Net"]})]}),u.jsx(so,{children:"Net Position"}),u.jsx(oo,{$color:a>=0?"#10b981":"#ef4444",children:Pr(a)})]})]})]})},DP=ys`
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-`,DP=S(V.div)`
+`,RP=S(V.div)`
   position: relative;
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
@@ -1716,7 +1733,7 @@ Error generating stack: `+s.message+`
     mask-composite: exclude;
     pointer-events: none;
   }
-`,RP=S.div`
+`,LP=S.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -1729,13 +1746,13 @@ Error generating stack: `+s.message+`
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: ${AP} 8s ease-in-out infinite;
+  animation: ${DP} 8s ease-in-out infinite;
   pointer-events: none;
   border-radius: var(--radius-xl);
-`,LP=S.div`
+`,IP=S.div`
   position: relative;
   z-index: 1;
-`,IP=S.div`
+`,MP=S.div`
   display: flex;
   align-items: center;
   gap: var(--space-sm);
@@ -1744,7 +1761,7 @@ Error generating stack: `+s.message+`
   @media (max-width: 640px) {
     margin-bottom: var(--space-lg);
   }
-`,MP=S.div`
+`,_P=S.div`
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -1759,16 +1776,16 @@ Error generating stack: `+s.message+`
     height: 16px;
     color: var(--accent);
   }
-`,_P=S.h3`
+`,$P=S.h3`
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-`,$P=S.div`
+`,BP=S.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
-`,BP=S.button`
+`,VP=S.button`
   position: relative;
   padding: 14px 16px;
   font-size: 13px;
@@ -1791,15 +1808,15 @@ Error generating stack: `+s.message+`
     border-color: ${({$active:e,$color:t})=>e?t:"var(--border-hover)"};
     transform: translateY(-1px);
   }
-`,VP=S.span`
+`,NP=S.span`
   font-weight: 600;
   display: block;
-`,NP=S.span`
+`,FP=S.span`
   font-size: 11px;
   opacity: 0.8;
   display: block;
   margin-top: 2px;
-`,FP=S(V.div)`
+`,OP=S(V.div)`
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -1812,7 +1829,7 @@ Error generating stack: `+s.message+`
     margin-top: var(--space-lg);
     padding-top: var(--space-lg);
   }
-`,OP=S.div`
+`,zP=S.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-md);
@@ -1849,7 +1866,7 @@ Error generating stack: `+s.message+`
   &::placeholder {
     color: var(--text-tertiary);
   }
-`,zP=S.select`
+`,UP=S.select`
   width: 100%;
   padding: 12px 40px 12px 14px;
   font-size: 15px;
@@ -1877,7 +1894,7 @@ Error generating stack: `+s.message+`
     background: var(--bg-secondary);
     color: var(--text-primary);
   }
-`,UP=S.div`
+`,HP=S.div`
   position: relative;
 
   &::before {
@@ -1895,11 +1912,11 @@ Error generating stack: `+s.message+`
   input {
     padding-left: 32px;
   }
-`,HP=S.div`
+`,WP=S.div`
   display: flex;
   gap: var(--space-sm);
   margin-top: var(--space-sm);
-`,WP=S(V.button)`
+`,GP=S(V.button)`
   flex: 1;
   padding: 14px 20px;
   font-size: 15px;
@@ -1922,7 +1939,7 @@ Error generating stack: `+s.message+`
     cursor: not-allowed;
     box-shadow: none;
   }
-`,GP=S(V.button)`
+`,KP=S(V.button)`
   padding: 14px 20px;
   font-size: 15px;
   font-weight: 600;
@@ -1938,10 +1955,10 @@ Error generating stack: `+s.message+`
     border-color: var(--border-hover);
     color: var(--text-primary);
   }
-`,KP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"5",x2:"12",y2:"19"}),u.jsx("line",{x1:"5",y1:"12",x2:"19",y2:"12"})]}),YP=[{type:"credit_card_spend",label:"CC Spend",hint:"Purchase on card",color:"#ef4444"},{type:"cc_payment",label:"CC Payment",hint:"Pay CC bill",color:"#10b981"},{type:"bank_debit",label:"Bank Debit",hint:"UPI/Card/Transfer",color:"#f59e0b"},{type:"bank_credit",label:"Bank Credit",hint:"Salary/Refund",color:"#3b82f6"}],QP="hdfc-bank",XP=({onAddTransaction:e,defaultDate:t})=>{const[n,r]=C.useState(""),[i,s]=C.useState(""),[o,a]=C.useState(""),[l,c]=C.useState(""),[d,f]=C.useState(t||ii(new Date)),p=px(),g=fx();C.useEffect(()=>{t&&f(t)},[t]);const x=()=>{switch(n){case"credit_card_spend":case"cc_payment":return p;case"bank_debit":case"bank_credit":return g;default:return Xr}},y=()=>{switch(n){case"credit_card_spend":case"cc_payment":return"Select card...";case"bank_debit":case"bank_credit":return"Select bank...";default:return"Select account..."}},w=n&&i&&parseFloat(o)>0&&d,m=()=>{if(!w||!n)return;const b=n==="cc_payment"?QP:void 0,T=HT(n,i,parseFloat(o),l||v(),d,b);e(T),h()},h=()=>{r(""),s(""),a(""),c("")},v=()=>{const b=Xr.find(T=>T.id===i);switch(n){case"credit_card_spend":return`Spent on ${b==null?void 0:b.name}`;case"cc_payment":return`Payment to ${b==null?void 0:b.name}`;case"bank_debit":return`Debited from ${b==null?void 0:b.name}`;case"bank_credit":return`Credited to ${b==null?void 0:b.name}`;default:return""}},k=b=>{const P=b.replace(/[^0-9.]/g,"").split(".");let L=P[0];const I=P[1];if(L.length>3){let U=L.substring(L.length-3),Se=L.substring(0,L.length-3);Se=Se.replace(/\B(?=(\d{2})+(?!\d))/g,","),L=Se+","+U}return I!==void 0?`${L}.${I}`:L},j=b=>{const T=b.replace(/,/g,"");(T===""||/^\d*\.?\d*$/.test(T))&&a(T)};return u.jsxs(DP,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(RP,{}),u.jsxs(LP,{children:[u.jsxs(IP,{children:[u.jsx(MP,{children:u.jsx(KP,{})}),u.jsx(_P,{children:"Add Transaction"})]}),u.jsx($P,{children:YP.map(({type:b,label:T,hint:P,color:L})=>u.jsxs(BP,{$active:n===b,$color:L,onClick:()=>{r(b),s("")},children:[u.jsx(VP,{children:T}),u.jsx(NP,{children:P})]},b))}),u.jsx(Cn,{children:n&&u.jsxs(FP,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},exit:{opacity:0,height:0},transition:{duration:.2},children:[u.jsxs(fo,{children:[u.jsx(po,{children:n==="credit_card_spend"||n==="cc_payment"?"Credit Card":"Bank Account"}),u.jsxs(zP,{value:i,onChange:b=>s(b.target.value),children:[u.jsx("option",{value:"",children:y()}),x().map(b=>u.jsx("option",{value:b.id,children:b.name},b.id))]})]}),u.jsxs(OP,{children:[u.jsxs(fo,{children:[u.jsx(po,{children:"Amount"}),u.jsx(UP,{children:u.jsx(Yl,{type:"text",inputMode:"decimal",placeholder:"10,000",value:k(o),onChange:b=>j(b.target.value)})})]}),u.jsxs(fo,{children:[u.jsx(po,{children:"Date"}),u.jsx(Yl,{type:"date",value:d,onChange:b=>f(b.target.value)})]})]}),u.jsxs(fo,{children:[u.jsx(po,{children:"Description (Optional)"}),u.jsx(Yl,{type:"text",placeholder:"e.g., Grocery shopping",value:l,onChange:b=>c(b.target.value)})]}),u.jsxs(HP,{children:[u.jsx(WP,{onClick:m,disabled:!w,whileHover:{scale:w?1.02:1},whileTap:{scale:w?.98:1},children:"Add"}),u.jsx(GP,{onClick:h,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Cancel"})]})]})})]})]})},ZP=ys`
+`,YP=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"5",x2:"12",y2:"19"}),u.jsx("line",{x1:"5",y1:"12",x2:"19",y2:"12"})]}),QP=[{type:"credit_card_spend",label:"CC Spend",hint:"Purchase on card",color:"#ef4444"},{type:"cc_payment",label:"CC Payment",hint:"Pay CC bill",color:"#10b981"},{type:"bank_debit",label:"Bank Debit",hint:"UPI/Card/Transfer",color:"#f59e0b"},{type:"bank_credit",label:"Bank Credit",hint:"Salary/Refund",color:"#3b82f6"}],XP="hdfc-bank",ZP=({onAddTransaction:e,defaultDate:t})=>{const[n,r]=C.useState(""),[i,s]=C.useState(""),[o,a]=C.useState(""),[l,c]=C.useState(""),[d,f]=C.useState(t||ii(new Date)),p=px(),g=fx();C.useEffect(()=>{t&&f(t)},[t]);const x=()=>{switch(n){case"credit_card_spend":case"cc_payment":return p;case"bank_debit":case"bank_credit":return g;default:return Xr}},y=()=>{switch(n){case"credit_card_spend":case"cc_payment":return"Select card...";case"bank_debit":case"bank_credit":return"Select bank...";default:return"Select account..."}},w=n&&i&&parseFloat(o)>0&&d,m=()=>{if(!w||!n)return;const b=n==="cc_payment"?XP:void 0,T=HT(n,i,parseFloat(o),l||v(),d,b);e(T),h()},h=()=>{r(""),s(""),a(""),c("")},v=()=>{const b=Xr.find(T=>T.id===i);switch(n){case"credit_card_spend":return`Spent on ${b==null?void 0:b.name}`;case"cc_payment":return`Payment to ${b==null?void 0:b.name}`;case"bank_debit":return`Debited from ${b==null?void 0:b.name}`;case"bank_credit":return`Credited to ${b==null?void 0:b.name}`;default:return""}},k=b=>{const P=b.replace(/[^0-9.]/g,"").split(".");let L=P[0];const I=P[1];if(L.length>3){let U=L.substring(L.length-3),Se=L.substring(0,L.length-3);Se=Se.replace(/\B(?=(\d{2})+(?!\d))/g,","),L=Se+","+U}return I!==void 0?`${L}.${I}`:L},j=b=>{const T=b.replace(/,/g,"");(T===""||/^\d*\.?\d*$/.test(T))&&a(T)};return u.jsxs(RP,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(LP,{}),u.jsxs(IP,{children:[u.jsxs(MP,{children:[u.jsx(_P,{children:u.jsx(YP,{})}),u.jsx($P,{children:"Add Transaction"})]}),u.jsx(BP,{children:QP.map(({type:b,label:T,hint:P,color:L})=>u.jsxs(VP,{$active:n===b,$color:L,onClick:()=>{r(b),s("")},children:[u.jsx(NP,{children:T}),u.jsx(FP,{children:P})]},b))}),u.jsx(Cn,{children:n&&u.jsxs(OP,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},exit:{opacity:0,height:0},transition:{duration:.2},children:[u.jsxs(fo,{children:[u.jsx(po,{children:n==="credit_card_spend"||n==="cc_payment"?"Credit Card":"Bank Account"}),u.jsxs(UP,{value:i,onChange:b=>s(b.target.value),children:[u.jsx("option",{value:"",children:y()}),x().map(b=>u.jsx("option",{value:b.id,children:b.name},b.id))]})]}),u.jsxs(zP,{children:[u.jsxs(fo,{children:[u.jsx(po,{children:"Amount"}),u.jsx(HP,{children:u.jsx(Yl,{type:"text",inputMode:"decimal",placeholder:"10,000",value:k(o),onChange:b=>j(b.target.value)})})]}),u.jsxs(fo,{children:[u.jsx(po,{children:"Date"}),u.jsx(Yl,{type:"date",value:d,onChange:b=>f(b.target.value)})]})]}),u.jsxs(fo,{children:[u.jsx(po,{children:"Description (Optional)"}),u.jsx(Yl,{type:"text",placeholder:"e.g., Grocery shopping",value:l,onChange:b=>c(b.target.value)})]}),u.jsxs(WP,{children:[u.jsx(GP,{onClick:m,disabled:!w,whileHover:{scale:w?1.02:1},whileTap:{scale:w?.98:1},children:"Add"}),u.jsx(KP,{onClick:h,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Cancel"})]})]})})]})]})},JP=ys`
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-`,JP=S(V.div)`
+`,qP=S(V.div)`
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -1971,7 +1988,7 @@ Error generating stack: `+s.message+`
     mask-composite: exclude;
     pointer-events: none;
   }
-`,qP=S.div`
+`,e4=S.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -1984,12 +2001,12 @@ Error generating stack: `+s.message+`
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: ${ZP} 8s ease-in-out infinite;
+  animation: ${JP} 8s ease-in-out infinite;
   pointer-events: none;
-`,e4=S.div`
+`,t4=S.div`
   position: relative;
   z-index: 1;
-`,t4=S.div`
+`,n4=S.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1999,11 +2016,11 @@ Error generating stack: `+s.message+`
   @media (max-width: 640px) {
     padding: var(--space-lg);
   }
-`,n4=S.div`
+`,r4=S.div`
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-`,r4=S.div`
+`,i4=S.div`
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -2019,12 +2036,12 @@ Error generating stack: `+s.message+`
     height: 16px;
     color: #3b82f6;
   }
-`,i4=S.h3`
+`,s4=S.h3`
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-`,s4=S.span`
+`,o4=S.span`
   font-size: 12px;
   font-weight: 600;
   color: #3b82f6;
@@ -2032,7 +2049,7 @@ Error generating stack: `+s.message+`
   border: 1px solid rgba(59, 130, 246, 0.25);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-`,o4=S.div`
+`,a4=S.div`
   max-height: 400px;
   overflow-y: auto;
 
@@ -2070,7 +2087,7 @@ Error generating stack: `+s.message+`
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
   }
-`,a4=S.div`
+`,l4=S.div`
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -2112,10 +2129,10 @@ Error generating stack: `+s.message+`
       height: 18px;
     }
   }
-`,l4=S.div`
+`,u4=S.div`
   min-width: 0;
   overflow: hidden;
-`,u4=S.div`
+`,c4=S.div`
   font-size: 14px;
   font-weight: 500;
   color: var(--text-primary);
@@ -2127,7 +2144,7 @@ Error generating stack: `+s.message+`
   @media (max-width: 480px) {
     font-size: 13px;
   }
-`,c4=S.div`
+`,d4=S.div`
   font-size: 12px;
   color: var(--text-tertiary);
   display: flex;
@@ -2140,7 +2157,7 @@ Error generating stack: `+s.message+`
     font-size: 11px;
     gap: 6px;
   }
-`,d4=S.span`
+`,f4=S.span`
   background: var(--bg-tertiary);
   padding: 2px 8px;
   border-radius: 4px;
@@ -2152,13 +2169,13 @@ Error generating stack: `+s.message+`
     padding: 2px 6px;
     font-size: 10px;
   }
-`,f4=S.div`
+`,p4=S.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-xs);
   position: relative;
-`,p4=S.div`
+`,h4=S.div`
   font-size: 15px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -2171,7 +2188,7 @@ Error generating stack: `+s.message+`
     font-size: 14px;
     padding-right: 0;
   }
-`,h4=S(V.button)`
+`,m4=S(V.button)`
   width: 28px;
   height: 28px;
   display: flex;
@@ -2218,11 +2235,11 @@ Error generating stack: `+s.message+`
       height: 12px;
     }
   }
-`,m4=S.div`
+`,g4=S.div`
   padding: var(--space-2xl);
   text-align: center;
   color: var(--text-tertiary);
-`,g4=S.div`
+`,v4=S.div`
   width: 56px;
   height: 56px;
   margin: 0 auto var(--space-md);
@@ -2238,15 +2255,15 @@ Error generating stack: `+s.message+`
     height: 24px;
     color: var(--text-tertiary);
   }
-`,v4=S.p`
+`,y4=S.p`
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 4px;
-`,y4=S.p`
+`,x4=S.p`
   font-size: 12px;
   color: var(--text-tertiary);
-`,x4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"8",y1:"6",x2:"21",y2:"6"}),u.jsx("line",{x1:"8",y1:"12",x2:"21",y2:"12"}),u.jsx("line",{x1:"8",y1:"18",x2:"21",y2:"18"}),u.jsx("line",{x1:"3",y1:"6",x2:"3.01",y2:"6"}),u.jsx("line",{x1:"3",y1:"12",x2:"3.01",y2:"12"}),u.jsx("line",{x1:"3",y1:"18",x2:"3.01",y2:"18"})]}),w4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),S4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"5",x2:"12",y2:"19"}),u.jsx("polyline",{points:"19 12 12 19 5 12"})]}),k4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"19",x2:"12",y2:"5"}),u.jsx("polyline",{points:"5 12 12 5 19 12"})]}),C4=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("polyline",{points:"20 6 9 17 4 12"})}),b4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("polyline",{points:"3 6 5 6 21 6"}),u.jsx("path",{d:"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"})]}),j4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("polyline",{points:"22 12 16 12 14 15 10 15 8 12 2 12"}),u.jsx("path",{d:"M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"})]}),T4=e=>{switch(e){case"credit_card_spend":return u.jsx(w4,{});case"cc_payment":return u.jsx(C4,{});case"bank_debit":return u.jsx(k4,{});case"bank_credit":return u.jsx(S4,{})}},bm=e=>e==="bank_credit"||e==="cc_payment",P4={hidden:{opacity:0,x:-10},visible:{opacity:1,x:0},exit:{opacity:0,x:10}},E4=({transactions:e,onDeleteTransaction:t,selectedDate:n})=>{const i=[...e].sort((s,o)=>{const a=o.date.localeCompare(s.date);return a!==0?a:new Date(o.createdAt).getTime()-new Date(s.createdAt).getTime()}).filter(s=>s.date<=n);return u.jsxs(JP,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(qP,{}),u.jsxs(e4,{children:[u.jsxs(t4,{children:[u.jsxs(n4,{children:[u.jsx(r4,{children:u.jsx(x4,{})}),u.jsx(i4,{children:"Transactions"})]}),u.jsx(s4,{children:i.length})]}),u.jsx(o4,{children:i.length===0?u.jsxs(m4,{children:[u.jsx(g4,{children:u.jsx(j4,{})}),u.jsx(v4,{children:"No transactions yet"}),u.jsx(y4,{children:"Add your first transaction above"})]}):u.jsx(Cn,{children:i.map(s=>{var a;const o=WT(s.accountId);return u.jsxs(hx,{variants:P4,initial:"hidden",animate:"visible",exit:"exit",transition:{type:"spring",stiffness:300,damping:30},children:[u.jsx(a4,{$type:s.type,children:T4(s.type)}),u.jsxs(l4,{children:[u.jsx(u4,{children:s.description}),u.jsxs(c4,{children:[u.jsx("span",{children:VT(s.date)}),u.jsx(d4,{children:(a=o==null?void 0:o.name)==null?void 0:a.replace(" Credit Card"," CC").replace(" Bank","")})]})]}),u.jsxs(f4,{children:[u.jsxs(p4,{$positive:bm(s.type),children:[bm(s.type)?"+":"-",Pr(s.amount)]}),u.jsx(h4,{onClick:()=>t(s.id),whileHover:{scale:1.1},whileTap:{scale:.9},"aria-label":"Delete transaction",children:u.jsx(b4,{})})]})]},s.id)})})})]})]})},A4=S(V.div)`
+`,w4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"8",y1:"6",x2:"21",y2:"6"}),u.jsx("line",{x1:"8",y1:"12",x2:"21",y2:"12"}),u.jsx("line",{x1:"8",y1:"18",x2:"21",y2:"18"}),u.jsx("line",{x1:"3",y1:"6",x2:"3.01",y2:"6"}),u.jsx("line",{x1:"3",y1:"12",x2:"3.01",y2:"12"}),u.jsx("line",{x1:"3",y1:"18",x2:"3.01",y2:"18"})]}),S4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),k4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"5",x2:"12",y2:"19"}),u.jsx("polyline",{points:"19 12 12 19 5 12"})]}),C4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"12",y1:"19",x2:"12",y2:"5"}),u.jsx("polyline",{points:"5 12 12 5 19 12"})]}),b4=()=>u.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:u.jsx("polyline",{points:"20 6 9 17 4 12"})}),j4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("polyline",{points:"3 6 5 6 21 6"}),u.jsx("path",{d:"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"})]}),T4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("polyline",{points:"22 12 16 12 14 15 10 15 8 12 2 12"}),u.jsx("path",{d:"M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"})]}),P4=e=>{switch(e){case"credit_card_spend":return u.jsx(S4,{});case"cc_payment":return u.jsx(b4,{});case"bank_debit":return u.jsx(C4,{});case"bank_credit":return u.jsx(k4,{})}},bm=e=>e==="bank_credit"||e==="cc_payment",E4={hidden:{opacity:0,x:-10},visible:{opacity:1,x:0},exit:{opacity:0,x:10}},A4=({transactions:e,onDeleteTransaction:t,selectedDate:n})=>{const i=[...e].sort((s,o)=>{const a=o.date.localeCompare(s.date);return a!==0?a:new Date(o.createdAt).getTime()-new Date(s.createdAt).getTime()}).filter(s=>s.date<=n);return u.jsxs(qP,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(e4,{}),u.jsxs(t4,{children:[u.jsxs(n4,{children:[u.jsxs(r4,{children:[u.jsx(i4,{children:u.jsx(w4,{})}),u.jsx(s4,{children:"Transactions"})]}),u.jsx(o4,{children:i.length})]}),u.jsx(a4,{children:i.length===0?u.jsxs(g4,{children:[u.jsx(v4,{children:u.jsx(T4,{})}),u.jsx(y4,{children:"No transactions yet"}),u.jsx(x4,{children:"Add your first transaction above"})]}):u.jsx(Cn,{children:i.map(s=>{var a;const o=WT(s.accountId);return u.jsxs(hx,{variants:E4,initial:"hidden",animate:"visible",exit:"exit",transition:{type:"spring",stiffness:300,damping:30},children:[u.jsx(l4,{$type:s.type,children:P4(s.type)}),u.jsxs(u4,{children:[u.jsx(c4,{children:s.description}),u.jsxs(d4,{children:[u.jsx("span",{children:VT(s.date)}),u.jsx(f4,{children:(a=o==null?void 0:o.name)==null?void 0:a.replace(" Credit Card"," CC").replace(" Bank","")})]})]}),u.jsxs(p4,{children:[u.jsxs(h4,{$positive:bm(s.type),children:[bm(s.type)?"+":"-",Pr(s.amount)]}),u.jsx(m4,{onClick:()=>t(s.id),whileHover:{scale:1.1},whileTap:{scale:.9},"aria-label":"Delete transaction",children:u.jsx(j4,{})})]})]},s.id)})})})]})]})},D4=S(V.div)`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -2256,7 +2273,7 @@ Error generating stack: `+s.message+`
   justify-content: center;
   z-index: 1000;
   padding: var(--space-md);
-`,D4=S(V.div)`
+`,R4=S(V.div)`
   background: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
@@ -2278,14 +2295,14 @@ Error generating stack: `+s.message+`
     background: var(--border);
     border-radius: 3px;
   }
-`,R4=S.div`
+`,L4=S.div`
   margin-bottom: var(--space-lg);
-`,L4=S.h2`
+`,I4=S.h2`
   font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--space-xs);
-`,I4=S.p`
+`,M4=S.p`
   font-size: 13px;
   color: var(--text-tertiary);
 `,jm=S.h3`
@@ -2355,11 +2372,11 @@ Error generating stack: `+s.message+`
   &::placeholder {
     color: var(--text-tertiary);
   }
-`,M4=S.div`
+`,_4=S.div`
   height: 1px;
   background: var(--border);
   margin: var(--space-lg) 0;
-`,_4=S.div`
+`,$4=S.div`
   display: flex;
   gap: var(--space-md);
 `,Rm=S(V.button)`
@@ -2390,11 +2407,11 @@ Error generating stack: `+s.message+`
       color: var(--text-primary);
     }
   `}
-`,$4=S.p`
+`,B4=S.p`
   font-size: 11px;
   color: var(--text-tertiary);
   margin-top: 4px;
-`,B4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"3",y1:"21",x2:"21",y2:"21"}),u.jsx("line",{x1:"3",y1:"10",x2:"21",y2:"10"}),u.jsx("polyline",{points:"5 6 12 3 19 6"}),u.jsx("line",{x1:"4",y1:"10",x2:"4",y2:"21"}),u.jsx("line",{x1:"20",y1:"10",x2:"20",y2:"21"})]}),V4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),N4={hidden:{opacity:0},visible:{opacity:1},exit:{opacity:0}},F4={hidden:{opacity:0,scale:.95,y:20},visible:{opacity:1,scale:1,y:0,transition:{type:"spring",stiffness:300,damping:30}},exit:{opacity:0,scale:.95,y:20,transition:{duration:.2}}},O4=({isOpen:e,onClose:t,initialBalances:n,initialCCBills:r,onSave:i})=>{const[s,o]=C.useState({}),[a,l]=C.useState({}),c=fx(),d=px();C.useEffect(()=>{if(e){const y={};c.forEach(m=>{var h;y[m.id]=((h=n[m.id])==null?void 0:h.toString())||""}),o(y);const w={};d.forEach(m=>{var h;w[m.id]=((h=r[m.id])==null?void 0:h.toString())||""}),l(w)}},[e,n,r]);const f=()=>{const y={};Object.entries(s).forEach(([m,h])=>{const v=parseFloat(h.replace(/,/g,""))||0;y[m]=v});const w={};Object.entries(a).forEach(([m,h])=>{const v=parseFloat(h.replace(/,/g,""))||0;w[m]=v}),i(y,w),t()},p=y=>{const w=y.replace(/[^0-9]/g,"");if(!w)return"";if(w.length>3){let m=w.substring(w.length-3),h=w.substring(0,w.length-3);return h=h.replace(/\B(?=(\d{2})+(?!\d))/g,","),h+","+m}return w},g=(y,w)=>{const m=w.replace(/,/g,"");(m===""||/^\d+$/.test(m))&&o(h=>({...h,[y]:m}))},x=(y,w)=>{const m=w.replace(/,/g,"");(m===""||/^\d+$/.test(m))&&l(h=>({...h,[y]:m}))};return u.jsx(Cn,{children:e&&u.jsx(A4,{variants:N4,initial:"hidden",animate:"visible",exit:"exit",onClick:t,children:u.jsxs(D4,{variants:F4,initial:"hidden",animate:"visible",exit:"exit",onClick:y=>y.stopPropagation(),children:[u.jsxs(R4,{children:[u.jsx(L4,{children:"Initial Balances & Bills"}),u.jsx(I4,{children:"Set your starting bank balances and any existing credit card outstanding amounts."})]}),u.jsxs(jm,{children:[u.jsx(B4,{}),"Bank Account Balances"]}),u.jsx(Tm,{children:c.map(y=>u.jsxs(Pm,{children:[u.jsx(Em,{children:y.name}),u.jsx(Am,{children:u.jsx(Dm,{type:"text",inputMode:"numeric",placeholder:"e.g., 50,000",value:p(s[y.id]||""),onChange:w=>g(y.id,w.target.value)})})]},y.id))}),u.jsx(M4,{}),u.jsxs(jm,{children:[u.jsx(V4,{}),"Credit Card Outstanding Bills"]}),u.jsx(Tm,{children:d.map(y=>u.jsxs(Pm,{children:[u.jsx(Em,{children:y.name}),u.jsx(Am,{children:u.jsx(Dm,{type:"text",inputMode:"numeric",placeholder:"e.g., 10,000",value:p(a[y.id]||""),onChange:w=>x(y.id,w.target.value)})}),u.jsx($4,{children:"Current outstanding amount you owe"})]},y.id))}),u.jsxs(_4,{children:[u.jsx(Rm,{onClick:t,children:"Cancel"}),u.jsx(Rm,{$primary:!0,onClick:f,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Save All"})]})]})})})},z4=S.div`
+`,V4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("line",{x1:"3",y1:"21",x2:"21",y2:"21"}),u.jsx("line",{x1:"3",y1:"10",x2:"21",y2:"10"}),u.jsx("polyline",{points:"5 6 12 3 19 6"}),u.jsx("line",{x1:"4",y1:"10",x2:"4",y2:"21"}),u.jsx("line",{x1:"20",y1:"10",x2:"20",y2:"21"})]}),N4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("rect",{x:"1",y:"4",width:"22",height:"16",rx:"2",ry:"2"}),u.jsx("line",{x1:"1",y1:"10",x2:"23",y2:"10"})]}),F4={hidden:{opacity:0},visible:{opacity:1},exit:{opacity:0}},O4={hidden:{opacity:0,scale:.95,y:20},visible:{opacity:1,scale:1,y:0,transition:{type:"spring",stiffness:300,damping:30}},exit:{opacity:0,scale:.95,y:20,transition:{duration:.2}}},z4=({isOpen:e,onClose:t,initialBalances:n,initialCCBills:r,onSave:i})=>{const[s,o]=C.useState({}),[a,l]=C.useState({}),c=fx(),d=px();C.useEffect(()=>{if(e){const y={};c.forEach(m=>{var h;y[m.id]=((h=n[m.id])==null?void 0:h.toString())||""}),o(y);const w={};d.forEach(m=>{var h;w[m.id]=((h=r[m.id])==null?void 0:h.toString())||""}),l(w)}},[e,n,r]);const f=()=>{const y={};Object.entries(s).forEach(([m,h])=>{const v=parseFloat(h.replace(/,/g,""))||0;y[m]=v});const w={};Object.entries(a).forEach(([m,h])=>{const v=parseFloat(h.replace(/,/g,""))||0;w[m]=v}),i(y,w),t()},p=y=>{const w=y.replace(/[^0-9]/g,"");if(!w)return"";if(w.length>3){let m=w.substring(w.length-3),h=w.substring(0,w.length-3);return h=h.replace(/\B(?=(\d{2})+(?!\d))/g,","),h+","+m}return w},g=(y,w)=>{const m=w.replace(/,/g,"");(m===""||/^\d+$/.test(m))&&o(h=>({...h,[y]:m}))},x=(y,w)=>{const m=w.replace(/,/g,"");(m===""||/^\d+$/.test(m))&&l(h=>({...h,[y]:m}))};return u.jsx(Cn,{children:e&&u.jsx(D4,{variants:F4,initial:"hidden",animate:"visible",exit:"exit",onClick:t,children:u.jsxs(R4,{variants:O4,initial:"hidden",animate:"visible",exit:"exit",onClick:y=>y.stopPropagation(),children:[u.jsxs(L4,{children:[u.jsx(I4,{children:"Initial Balances & Bills"}),u.jsx(M4,{children:"Set your starting bank balances and any existing credit card outstanding amounts."})]}),u.jsxs(jm,{children:[u.jsx(V4,{}),"Bank Account Balances"]}),u.jsx(Tm,{children:c.map(y=>u.jsxs(Pm,{children:[u.jsx(Em,{children:y.name}),u.jsx(Am,{children:u.jsx(Dm,{type:"text",inputMode:"numeric",placeholder:"e.g., 50,000",value:p(s[y.id]||""),onChange:w=>g(y.id,w.target.value)})})]},y.id))}),u.jsx(_4,{}),u.jsxs(jm,{children:[u.jsx(N4,{}),"Credit Card Outstanding Bills"]}),u.jsx(Tm,{children:d.map(y=>u.jsxs(Pm,{children:[u.jsx(Em,{children:y.name}),u.jsx(Am,{children:u.jsx(Dm,{type:"text",inputMode:"numeric",placeholder:"e.g., 10,000",value:p(a[y.id]||""),onChange:w=>x(y.id,w.target.value)})}),u.jsx(B4,{children:"Current outstanding amount you owe"})]},y.id))}),u.jsxs($4,{children:[u.jsx(Rm,{onClick:t,children:"Cancel"}),u.jsx(Rm,{$primary:!0,onClick:f,whileHover:{scale:1.02},whileTap:{scale:.98},children:"Save All"})]})]})})})},U4=S.div`
   min-height: 100vh;
   padding-top: calc(var(--space-2xl) + 80px);
   padding-bottom: var(--space-3xl);
@@ -2408,7 +2425,7 @@ Error generating stack: `+s.message+`
     padding-top: var(--space-lg);
     padding-bottom: calc(var(--space-xl) + 80px);
   }
-`,U4=S(V.div)`
+`,H4=S(V.div)`
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -2418,7 +2435,7 @@ Error generating stack: `+s.message+`
     gap: var(--space-lg);
     margin-bottom: var(--space-xl);
   }
-`,H4=S.div`
+`,W4=S.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-xl);
@@ -2436,7 +2453,7 @@ Error generating stack: `+s.message+`
   @media (max-width: 640px) {
     gap: var(--space-lg);
   }
-`,W4=S.div`
+`,G4=S.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -2445,7 +2462,7 @@ Error generating stack: `+s.message+`
     position: sticky;
     top: calc(80px + var(--space-xl));
   }
-`,G4=S.div`
+`,K4=S.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -2453,18 +2470,18 @@ Error generating stack: `+s.message+`
   @media (max-width: 640px) {
     gap: var(--space-lg);
   }
-`,K4=S(V.div)`
+`,Y4=S(V.div)`
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-`,Y4=S.h2`
+`,Q4=S.h2`
   font-size: 12px;
   font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--space-xs);
-`,Q4=S(V.div)`
+`,X4=S(V.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: var(--space-md);
@@ -2472,7 +2489,7 @@ Error generating stack: `+s.message+`
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
-`,X4=S(V.button)`
+`,Z4=S(V.button)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2500,13 +2517,13 @@ Error generating stack: `+s.message+`
     width: 18px;
     height: 18px;
   }
-`,Z4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("circle",{cx:"12",cy:"12",r:"3"}),u.jsx("path",{d:"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"})]}),Lm={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.08}}},J4=()=>{const[e,t]=C.useState(ii(new Date)),[n,r]=C.useState([]),[i,s]=C.useState({}),[o,a]=C.useState({}),[l,c]=C.useState([]),[d,f]=C.useState(!1);C.useEffect(()=>{const w=IT(),m=_T(),h=BT();r(w),s(m),a(h)},[]),C.useEffect(()=>{const w=zT(n,e,i,o);c(w)},[e,n,i,o]);const p=C.useCallback(w=>{r(m=>{const h=[...m,w];return Sm(h),h})},[]),g=C.useCallback(w=>{r(m=>{const h=m.filter(v=>v.id!==w);return Sm(h),h})},[]),x=C.useCallback((w,m)=>{s(w),a(m),MT(w),$T(m)},[]),y=l.filter(w=>w.account.type==="credit_card");return u.jsxs(z4,{children:[u.jsxs(ef,{$maxWidth:"wide",children:[u.jsxs(U4,{initial:{opacity:0,y:-20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(lP,{selectedDate:e,onDateChange:t}),u.jsx(EP,{balances:l})]}),u.jsxs(H4,{children:[u.jsxs(W4,{children:[u.jsx(XP,{onAddTransaction:p,defaultDate:e}),u.jsxs(X4,{onClick:()=>f(!0),whileHover:{scale:1.01},whileTap:{scale:.99},children:[u.jsx(Z4,{}),"Set Initial Balances"]})]}),u.jsxs(G4,{children:[u.jsxs(K4,{variants:Lm,initial:"hidden",animate:"visible",children:[u.jsx(Y4,{children:"Credit Cards"}),u.jsx(Q4,{variants:Lm,children:y.map(w=>u.jsx(SP,{accountBalance:w},w.account.id))})]}),u.jsx(E4,{transactions:n,onDeleteTransaction:g,selectedDate:e})]})]})]}),u.jsx(O4,{isOpen:d,onClose:()=>f(!1),initialBalances:i,initialCCBills:o,onSave:x})]})},q4=S.div`
+`,J4=()=>u.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round",children:[u.jsx("circle",{cx:"12",cy:"12",r:"3"}),u.jsx("path",{d:"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"})]}),Lm={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.08}}},q4=()=>{const[e,t]=C.useState(ii(new Date)),[n,r]=C.useState([]),[i,s]=C.useState({}),[o,a]=C.useState({}),[l,c]=C.useState([]),[d,f]=C.useState(!1);C.useEffect(()=>{const w=IT(),m=_T(),h=BT();r(w),s(m),a(h)},[]),C.useEffect(()=>{const w=zT(n,e,i,o);c(w)},[e,n,i,o]);const p=C.useCallback(w=>{r(m=>{const h=[...m,w];return Sm(h),h})},[]),g=C.useCallback(w=>{r(m=>{const h=m.filter(v=>v.id!==w);return Sm(h),h})},[]),x=C.useCallback((w,m)=>{s(w),a(m),MT(w),$T(m)},[]),y=l.filter(w=>w.account.type==="credit_card");return u.jsxs(U4,{children:[u.jsxs(ef,{$maxWidth:"wide",children:[u.jsxs(H4,{initial:{opacity:0,y:-20},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:100,damping:20},children:[u.jsx(uP,{selectedDate:e,onDateChange:t}),u.jsx(AP,{balances:l})]}),u.jsxs(W4,{children:[u.jsxs(G4,{children:[u.jsx(ZP,{onAddTransaction:p,defaultDate:e}),u.jsxs(Z4,{onClick:()=>f(!0),whileHover:{scale:1.01},whileTap:{scale:.99},children:[u.jsx(J4,{}),"Set Initial Balances"]})]}),u.jsxs(K4,{children:[u.jsxs(Y4,{variants:Lm,initial:"hidden",animate:"visible",children:[u.jsx(Q4,{children:"Credit Cards"}),u.jsx(X4,{variants:Lm,children:y.map(w=>u.jsx(kP,{accountBalance:w},w.account.id))})]}),u.jsx(A4,{transactions:n,onDeleteTransaction:g,selectedDate:e})]})]})]}),u.jsx(z4,{isOpen:d,onClose:()=>f(!1),initialBalances:i,initialCCBills:o,onSave:x})]})},eE=S.div`
   min-height: 100vh;
   position: relative;
-`,eE=S.main`
+`,tE=S.main`
   position: relative;
   z-index: 1;
-`,tE=S.a`
+`,nE=S.a`
   position: absolute;
   top: -100px;
   left: 50%;
@@ -2527,4 +2544,4 @@ Error generating stack: `+s.message+`
   &:focus {
     top: 20px;
   }
-`;function nE(){return u.jsx(U2,{basename:"/tools",children:u.jsxs(K2,{children:[u.jsx(YS,{}),u.jsxs(q4,{children:[u.jsx(tE,{href:"#main-content",children:"Skip to main content"}),u.jsx(ZS,{}),u.jsx(I5,{}),u.jsx(eE,{id:"main-content",children:u.jsxs($2,{children:[u.jsx(To,{path:"/",element:u.jsx(K5,{})}),u.jsx(To,{path:"/tax-calculator",element:u.jsx(LT,{})}),u.jsx(To,{path:"/expense-manager",element:u.jsx(J4,{})})]})})]})]})})}W0(document.getElementById("root")).render(u.jsx(C.StrictMode,{children:u.jsx(nE,{})}));
+`;function rE(){return u.jsx(U2,{basename:"/tools",children:u.jsxs(K2,{children:[u.jsx(YS,{}),u.jsxs(eE,{children:[u.jsx(nE,{href:"#main-content",children:"Skip to main content"}),u.jsx(ZS,{}),u.jsx(I5,{}),u.jsx(tE,{id:"main-content",children:u.jsxs($2,{children:[u.jsx(To,{path:"/",element:u.jsx(K5,{})}),u.jsx(To,{path:"/tax-calculator",element:u.jsx(LT,{})}),u.jsx(To,{path:"/expense-manager",element:u.jsx(q4,{})})]})})]})]})})}W0(document.getElementById("root")).render(u.jsx(C.StrictMode,{children:u.jsx(rE,{})}));
