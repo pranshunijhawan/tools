@@ -2555,13 +2555,13 @@ This will replace all current data:
 • ${A.transactions.length} transactions
 • Initial balances and CC bills
 
-This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.initialCCBills),uc(A.transactions),Av(A.initialBalances),_v(A.initialCCBills)):alert("Invalid backup file. Please select a valid expense manager backup JSON file.")},j.readAsText(k),v.target.value=""},[]);return l.jsxs(CL,{variants:zL,initial:"hidden",animate:"visible",children:[l.jsxs(Vw,{$maxWidth:"wide",children:[l.jsxs(TL,{variants:vc,children:[l.jsx(A_,{selectedDate:e,onDateChange:t}),l.jsx(ss,{title:"Summary",icon:l.jsx(BL,{}),accent:"green",children:l.jsx(K_,{balances:f})})]}),l.jsxs(PL,{children:[l.jsx(DL,{variants:vc,children:l.jsx(ss,{title:"Add Transaction",icon:l.jsx(VL,{}),accent:"orange",children:l.jsx(hI,{onAddTransaction:m,defaultDate:e})})}),l.jsxs(EL,{variants:vc,children:[l.jsx(ss,{title:"Credit Cards",icon:l.jsx(FL,{}),accent:"pink",badge:p.length,children:l.jsx(AL,{children:p.map((v,k)=>l.jsx(z_,{accountBalance:v,index:k},v.account.id))})}),l.jsx(JI,{transactions:n,onDeleteTransaction:x,selectedDate:e}),l.jsx(ss,{title:"Manage Data",icon:l.jsx($L,{}),accent:"purple",defaultOpen:!1,children:l.jsxs(_L,{children:[l.jsxs(LL,{type:"button",onClick:()=>c(!0),whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(RL,{}),"Set Initial Balances"]}),l.jsxs(IL,{children:[l.jsxs(l0,{type:"button",$variant:"secondary",onClick:S,whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(ML,{}),"Export"]}),l.jsxs(l0,{type:"button",$variant:"secondary",onClick:g,whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(NL,{}),"Import"]})]})]})}),l.jsx(OL,{ref:d,type:"file",accept:".json",onChange:h})]})]})]}),l.jsx(dL,{isOpen:u,onClose:()=>c(!1),initialBalances:i,initialCCBills:o,onSave:y})]})},UL=b.div`
+This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.initialCCBills),uc(A.transactions),Av(A.initialBalances),_v(A.initialCCBills)):alert("Invalid backup file. Please select a valid expense manager backup JSON file.")},j.readAsText(k),v.target.value=""},[]);return l.jsxs(CL,{variants:zL,initial:"hidden",animate:"visible",children:[l.jsxs(Vw,{$maxWidth:"wide",children:[l.jsxs(TL,{variants:vc,children:[l.jsx(A_,{selectedDate:e,onDateChange:t}),l.jsx(ss,{title:"Summary",icon:l.jsx(BL,{}),accent:"green",children:l.jsx(K_,{balances:f})})]}),l.jsxs(PL,{children:[l.jsx(DL,{variants:vc,children:l.jsx(ss,{title:"Add Transaction",icon:l.jsx(VL,{}),accent:"orange",children:l.jsx(hI,{onAddTransaction:m,defaultDate:e})})}),l.jsxs(EL,{variants:vc,children:[l.jsx(ss,{title:"Credit Cards",icon:l.jsx(FL,{}),accent:"pink",badge:p.length,children:l.jsx(AL,{children:p.map((v,k)=>l.jsx(z_,{accountBalance:v,index:k},v.account.id))})}),l.jsx(JI,{transactions:n,onDeleteTransaction:x,selectedDate:e}),l.jsx(ss,{title:"Manage Data",icon:l.jsx($L,{}),accent:"purple",defaultOpen:!1,children:l.jsxs(_L,{children:[l.jsxs(LL,{type:"button",onClick:()=>c(!0),whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(RL,{}),"Set Initial Balances"]}),l.jsxs(IL,{children:[l.jsxs(l0,{type:"button",$variant:"secondary",onClick:S,whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(ML,{}),"Export"]}),l.jsxs(l0,{type:"button",$variant:"secondary",onClick:g,whileHover:{scale:1.02,backgroundColor:"var(--glass-bg-hover)"},whileTap:{scale:.98},transition:As,children:[l.jsx(NL,{}),"Import"]})]})]})}),l.jsx(OL,{ref:d,type:"file",accept:".json",onChange:h})]})]})]}),l.jsx(dL,{isOpen:u,onClose:()=>c(!1),initialBalances:i,initialCCBills:o,onSave:y})]})},UL=()=>{const e=navigator.userAgent;return!!(/iPhone|iPad|iPod/.test(e)||/Macintosh/.test(e)&&navigator.maxTouchPoints>1)},HL=()=>l.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",strokeLinecap:"round",strokeLinejoin:"round",children:[l.jsx("path",{d:"M7 3H5a2 2 0 0 0-2 2v2"}),l.jsx("path",{d:"M17 3h2a2 2 0 0 1 2 2v2"}),l.jsx("path",{d:"M7 21H5a2 2 0 0 1-2-2v-2"}),l.jsx("path",{d:"M17 21h2a2 2 0 0 0 2-2v-2"}),l.jsx("path",{d:"M8 8v2"}),l.jsx("path",{d:"M16 8v2"}),l.jsx("path",{d:"M12 8v5"}),l.jsx("path",{d:"M8 15c0 1.5 1.8 3 4 3s4-1.5 4-3"})]}),YL=()=>l.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",strokeLinecap:"round",children:[l.jsx("path",{d:"M12 2C9.5 2 7.5 3.5 6.5 5.5"}),l.jsx("path",{d:"M17.5 5.5c-1-2-3-3.5-5.5-3.5"}),l.jsx("path",{d:"M4 10c0-4.5 3.5-8 8-8s8 3.5 8 8v4c0 4.5-3.5 8-8 8"}),l.jsx("path",{d:"M12 6c-2.2 0-4 1.8-4 4v4c0 2.2 1.8 4 4 4"}),l.jsx("path",{d:"M12 6c2.2 0 4 1.8 4 4v2"}),l.jsx("path",{d:"M12 10v8"}),l.jsx("path",{d:"M8 14c0 2.2 1.8 4 4 4"})]}),GL=b.div`
   min-height: 100vh;
   position: relative;
-`,HL=b.main`
+`,KL=b.main`
   position: relative;
   z-index: 1;
-`,YL=b.a`
+`,QL=b.a`
   position: absolute;
   top: -100px;
   left: 50%;
@@ -2582,7 +2582,7 @@ This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.ini
   &:focus {
     top: 20px;
   }
-`,GL=Ri`
+`,XL=Ri`
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
 `,u0=b.div`
@@ -2602,7 +2602,7 @@ This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.ini
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  animation: ${GL} 1.5s ease-in-out infinite;
+  animation: ${XL} 1.5s ease-in-out infinite;
   
   svg {
     width: 100%;
@@ -2611,7 +2611,7 @@ This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.ini
 `,d0=b.p`
   color: var(--text-secondary);
   font-size: 15px;
-`,KL=b.button`
+`,ZL=b.button`
   padding: 12px 28px;
   background: var(--gradient);
   border: none;
@@ -2630,4 +2630,4 @@ This action cannot be undone.`)&&(r(A.transactions),a(A.initialBalances),s(A.ini
   &:active {
     transform: scale(0.98);
   }
-`,QL=()=>{const e=Jf(),t=Li();return w.useEffect(()=>{const n=sessionStorage.getItem("spa-redirect");if(n){sessionStorage.removeItem("spa-redirect");const r=n.replace(/^\/tools/,"")||"/";r!==t.pathname&&e(r,{replace:!0})}},[e,t.pathname]),null};function XL(){const{isAuthenticated:e,isLoading:t,authFailed:n,retryAuth:r}=bj();return t||!e&&!n?l.jsxs(u0,{children:[l.jsx(c0,{children:l.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",children:[l.jsx("path",{d:"M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"}),l.jsx("path",{d:"M12 6c-3.314 0-6 2.686-6 6 0 1.5.5 3 1 4"}),l.jsx("path",{d:"M18 12c0-3.314-2.686-6-6-6"}),l.jsx("circle",{cx:"12",cy:"12",r:"2",fill:"currentColor"})]})}),l.jsx(d0,{children:"Authenticating..."})]}):n&&!e?l.jsxs(u0,{children:[l.jsx(c0,{style:{animation:"none",opacity:1},children:l.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",children:[l.jsx("path",{d:"M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"}),l.jsx("path",{d:"M12 6c-3.314 0-6 2.686-6 6 0 1.5.5 3 1 4"}),l.jsx("path",{d:"M18 12c0-3.314-2.686-6-6-6"}),l.jsx("circle",{cx:"12",cy:"12",r:"2",fill:"currentColor"})]})}),l.jsx(d0,{children:"Authentication required to continue"}),l.jsx(KL,{onClick:r,children:"Try Again"})]}):l.jsxs(UL,{children:[l.jsx(QL,{}),l.jsx(YL,{href:"#main-content",children:"Skip to main content"}),l.jsx(TC,{}),l.jsx(lE,{}),l.jsx(HL,{id:"main-content",children:l.jsxs(aj,{children:[l.jsx(oa,{path:"/",element:l.jsx(bE,{})}),l.jsx(oa,{path:"/tax-manager",element:l.jsx(f4,{})}),l.jsx(oa,{path:"/expense-manager",element:l.jsx(WL,{})}),l.jsx(oa,{path:"/tax-calculator",element:l.jsx(rj,{to:"/tax-manager",replace:!0})})]})})]})}function ZL(){return l.jsx(fj,{basename:"/tools",children:l.jsx(gj,{children:l.jsxs(Sj,{children:[l.jsx(kC,{}),l.jsx(XL,{})]})})})}Cx(document.getElementById("root")).render(l.jsx(w.StrictMode,{children:l.jsx(ZL,{})}));
+`,JL=()=>{const e=Jf(),t=Li();return w.useEffect(()=>{const n=sessionStorage.getItem("spa-redirect");if(n){sessionStorage.removeItem("spa-redirect");const r=n.replace(/^\/tools/,"")||"/";r!==t.pathname&&e(r,{replace:!0})}},[e,t.pathname]),null};function qL(){const{isAuthenticated:e,isLoading:t,authFailed:n,retryAuth:r}=bj(),i=w.useMemo(()=>UL()?HL:YL,[]);return t||!e&&!n?l.jsxs(u0,{children:[l.jsx(c0,{children:l.jsx(i,{})}),l.jsx(d0,{children:"Authenticating..."})]}):n&&!e?l.jsxs(u0,{children:[l.jsx(c0,{style:{animation:"none",opacity:1},children:l.jsx(i,{})}),l.jsx(d0,{children:"Authentication required to continue"}),l.jsx(ZL,{onClick:r,children:"Try Again"})]}):l.jsxs(GL,{children:[l.jsx(JL,{}),l.jsx(QL,{href:"#main-content",children:"Skip to main content"}),l.jsx(TC,{}),l.jsx(lE,{}),l.jsx(KL,{id:"main-content",children:l.jsxs(aj,{children:[l.jsx(oa,{path:"/",element:l.jsx(bE,{})}),l.jsx(oa,{path:"/tax-manager",element:l.jsx(f4,{})}),l.jsx(oa,{path:"/expense-manager",element:l.jsx(WL,{})}),l.jsx(oa,{path:"/tax-calculator",element:l.jsx(rj,{to:"/tax-manager",replace:!0})})]})})]})}function e3(){return l.jsx(fj,{basename:"/tools",children:l.jsx(gj,{children:l.jsxs(Sj,{children:[l.jsx(kC,{}),l.jsx(qL,{})]})})})}Cx(document.getElementById("root")).render(l.jsx(w.StrictMode,{children:l.jsx(e3,{})}));
